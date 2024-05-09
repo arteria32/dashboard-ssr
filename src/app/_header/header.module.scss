@@ -1,0 +1,11 @@
+.main{
+    width: 100%;
+    height: fill-available;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--color-bg-secondary);
+    padding: var(--space-xs);
+}

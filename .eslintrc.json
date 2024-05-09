@@ -1,0 +1,5 @@
+{
+  "extends": ["next/core-web-vitals",
+  "@gravity-ui/eslint-config",
+  "@gravity-ui/eslint-config/prettier"]
+}
