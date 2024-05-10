@@ -1,0 +1,14 @@
+.main {
+    padding: var(--space-xs);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+.toolbox{
+    flex: 0 0 var(--space-3xl);
+    border-radius: var(--control-radius);
+    border: var(--control-border-width) solid var(--color-bg-border);
+    overflow: hidden;
+}

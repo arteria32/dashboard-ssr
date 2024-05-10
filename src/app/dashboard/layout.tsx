@@ -1,3 +1,4 @@
+import Toolbox from './_toolbox/toolbox';
 import styles from './dashboard.module.scss';
 
 export default function DashboardLayout({
@@ -7,8 +8,10 @@ export default function DashboardLayout({
 }>) {
   return (
     <div className={styles.main}>
-      dashboard-layot
-      {children}
+      <section className={styles.toolbox}>
+        <Toolbox />
+      </section>
+      <section>{children}</section>
     </div>
   );
 }
