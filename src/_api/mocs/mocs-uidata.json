@@ -1,0 +1,12 @@
+{
+    "MainPage": {
+        "showcaseConfig": {
+            "name": "Showcase",
+            "displayName": "Информ витрина"
+        },
+        "mainBlockConfig": {
+            "name": "Heatmap",
+            "displayName": "Хитмап"
+        }
+    }
+}

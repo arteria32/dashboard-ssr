@@ -5,10 +5,47 @@
     align-items: stretch;
     justify-content: flex-start;
     overflow: hidden;
+    flex: 1;
+
 }
-.toolbox{
+
+.toolbox {
     flex: 0 0 var(--space-3xl);
     border-radius: var(--control-radius);
     border: var(--control-border-width) solid var(--color-bg-border);
     overflow: hidden;
 }
+
+.layoutContainer {
+    flex: 1 1 auto;
+    overflow: hidden;
+    padding: var(--space-xs) 0;
+    display: flex;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    overflow: hidden;
+    flex: 1;
+    gap: var(--space-xs);
+
+    & * {
+        border-radius: var(--control-radius);
+        border: var(--control-border-width) solid var(--color-bg-border);
+        background: var(--color-bg-secondary);
+        padding: var(--space-xs);
+
+    }
+
+    .showcase {
+        flex: 0 0 calc(var(--space-6xl)*3);
+    }
+
+    .mainBlock {
+        flex: 1 1 auto;
+    }
+}
+

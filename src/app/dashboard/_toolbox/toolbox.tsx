@@ -53,6 +53,7 @@ export default function Toolbox() {
         url.searchParams.set(key, value);
       }
       router.push(url.toString());
+      router.refresh();
     },
     [dashboardConfig],
     300,

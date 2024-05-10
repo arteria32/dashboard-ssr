@@ -1,0 +1,13 @@
+.plug {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-xs);
+    border-radius: var(--control-radius);
+    border: var(--control-border-width) solid var(--color-bg-border);
+    background: var(--color-bg-secondary);
+    padding: var(--space-xs);
+}

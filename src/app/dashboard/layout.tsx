@@ -11,7 +11,7 @@ export default function DashboardLayout({
       <section className={styles.toolbox}>
         <Toolbox />
       </section>
-      <section>{children}</section>
+      <section className={styles.layoutContainer}>{children}</section>
     </div>
   );
 }
