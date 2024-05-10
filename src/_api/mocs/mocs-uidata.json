@@ -8,5 +8,23 @@
             "name": "Heatmap",
             "displayName": "Хитмап"
         }
+    },
+    "Showcase": {
+        "name":"Showcase",
+        "displayName": "Информ витрина",
+        "children": [
+            {
+                "name": "Widget1",
+                "displayName": "Виджет 1"
+            },
+            {
+                "name": "Widget2",
+                "displayName": "Виджет 2"
+            },
+            {
+                "name": "Widget3",
+                "displayName": "Виджет 3"
+            }
+        ]
     }
 }

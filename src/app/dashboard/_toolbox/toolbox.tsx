@@ -6,16 +6,10 @@ import cn from 'classnames';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import styles from './toolbox.module.scss';
-
-enum QueryParamsEnum {
-  ID_OBJECT = 'idObject',
-  FROM = 'from',
-  TO = 'to',
-}
-
-type DashboardConfig = {
-  [key in QueryParamsEnum]: string | null;
-};
+import {
+  DashboardConfig,
+  QueryParamsEnum,
+} from '@/_types/system/dashboard-config';
 
 const getDateRangeFromConfig = (
   config: DashboardConfig,

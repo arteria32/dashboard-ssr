@@ -2,15 +2,17 @@ import { FC } from 'react';
 import styles from './dashboard.module.scss';
 import { getUIConfigByIdObject } from '@/_api/uidata.api';
 import Plug from '@/_shared/components/plug/plug';
-import { WidgetConfig } from '@/_types/system/widget';
+import { WidgetInfo } from '@/_types/system/widget';
+import Showcase from './_showcase/showcase';
+import { DashboardConfig } from '@/_types/system/dashboard-config';
 
 type DashboardPageProps = {
-  searchParams: { [key: string]: string };
+  searchParams: DashboardConfig;
 };
 
 type DashboardUIConfig = {
-  showcaseConfig: WidgetConfig;
-  mainBlockConfig: WidgetConfig;
+  showcaseConfig: WidgetInfo;
+  mainBlockConfig: WidgetInfo;
 };
 const UI_CONFIG_NAME = 'MainPage';
 
@@ -26,7 +28,12 @@ const DashboardPage: FC<DashboardPageProps> = async ({ searchParams }) => {
 
   return (
     <main className={styles.page}>
-      <section className={styles.showcase}>showcase</section>
+      <section className={styles.showcase}>
+        <Showcase
+          componentConfig={uiConfig.showcaseConfig}
+          dataConfig={{ idObject, from, to }}
+        />
+      </section>
       <section className={styles.mainBlock}>heatmap</section>
     </main>
   );

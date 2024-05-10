@@ -32,12 +32,12 @@
     flex: 1;
     gap: var(--space-xs);
 
-    & * {
+    &>* {
         border-radius: var(--control-radius);
         border: var(--control-border-width) solid var(--color-bg-border);
         background: var(--color-bg-secondary);
         padding: var(--space-xs);
-
+        display: flex;
     }
 
     .showcase {
@@ -48,4 +48,3 @@
         flex: 1 1 auto;
     }
 }
-
