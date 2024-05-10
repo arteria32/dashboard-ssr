@@ -10,7 +10,7 @@
         }
     },
     "Showcase": {
-        "name":"Showcase",
+        "name": "Showcase",
         "displayName": "Информ витрина",
         "children": [
             {
@@ -26,5 +26,8 @@
                 "displayName": "Виджет 3"
             }
         ]
-    }
+    },
+    "Widget1": {},
+    "Widget2": {},
+    "Widget3": {}
 }

@@ -1,17 +1,23 @@
-import { WdigetPros, WidgetInfo } from '@/_types/system/widget';
-import { FC } from 'react';
+import { getUIConfigByIdObject } from '@/_api/uidata.api';
+import {
+  WdigetPros,
+  WidgetConfig,
+  WidgetData,
+  WidgetInfo,
+} from '@/_types/system/widget';
+import { FC, Suspense } from 'react';
 
 type WidgetProviderProps<T = any> = {
+  children: FC<WdigetPros<T>>;
   widgetInfo: WidgetInfo;
   dataWidget: T | null;
-  getWidgetData: (widgetConfg: WidgetInfo) => Promise<T>;
-  children: FC<WdigetPros<T>>;
+  getWidgetData?: (widgetConfg: WidgetInfo) => Promise<T>;
 };
 //Провайдер для вставки виджетов
-const WidgetProvider: FC<WidgetProviderProps> = ({
+const WidgetProvider: FC<WidgetProviderProps> = async ({
   widgetInfo,
   dataWidget,
-  getWidgetData,
+  getWidgetData = () => null,
   children,
 }) => {
   console.log(
@@ -22,7 +28,20 @@ const WidgetProvider: FC<WidgetProviderProps> = ({
     children,
   );
   //Проверяем есть ли виджет дата, если она есть, то сразу рисуем widget
-  return <>{children}</>;
+  const uiConfig = await getUIConfigByIdObject<WidgetConfig>(widgetInfo.name);
+  if (!uiConfig) return <>Нет конфиг файла</>;
+  const data = dataWidget ?? (await getWidgetData(uiConfig));
+
+  console.log('data', data);
+  return <>{children({ data, config: uiConfig })}</>;
 };
 
-export default WidgetProvider;
+const WidgetProviderWrapper: FC<WidgetProviderProps> = (props) => {
+  return (
+    <Suspense fallback={<p>Loading widget...</p>}>
+      <WidgetProvider {...props} />
+    </Suspense>
+  );
+};
+
+export default WidgetProviderWrapper;

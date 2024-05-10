@@ -1,9 +1,11 @@
 import { DashboardConfig } from '@/_types/system/dashboard-config';
 import { WidgetConfig, WidgetInfo } from '@/_types/system/widget';
-import { FC } from 'react';
+import { FC, Fragment } from 'react';
 import styles from './showcase.module.scss';
 import { getUIConfigByIdObject } from '@/_api/uidata.api';
 import Plug from '@/_shared/components/plug/plug';
+import WidgetProviderWrapper from '@/_shared/components/widgets-lib/widget-provider';
+import { Chart } from '@/_shared/components/widgets-lib/widgets/chart';
 
 type ShowcaseProps = {
   componentConfig: WidgetInfo;
@@ -20,8 +22,15 @@ const Showcase: FC<ShowcaseProps> = async ({ componentConfig, dataConfig }) => {
   if (!uiConfig) {
     return <Plug message={'Отсутствует конфигурационный файл '} />;
   }
+  const widgetBlocks = uiConfig.children?.map((item, index) => (
+    <div className={styles.widget} key={`${item.name} ${index}`}>
+      <WidgetProviderWrapper widgetInfo={item} dataWidget={[]}>
+        {Chart}
+      </WidgetProviderWrapper>
+    </div>
+  ));
 
-  return <div className={styles.main}>ShowCase</div>;
+  return <div className={styles.main}>{widgetBlocks}</div>;
 };
 
 export default Showcase;
