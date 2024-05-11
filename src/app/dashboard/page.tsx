@@ -16,6 +16,8 @@ type DashboardUIConfig = {
 };
 const UI_CONFIG_NAME = 'MainPage';
 
+export const dynamic = 'force-dynamic';
+
 const DashboardPage: FC<DashboardPageProps> = async ({ searchParams }) => {
   const { idObject, from, to } = searchParams;
   if (!idObject || !from || !to) {
