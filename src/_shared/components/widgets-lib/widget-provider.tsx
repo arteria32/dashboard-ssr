@@ -1,10 +1,5 @@
-import { getUIConfigByIdObject } from '@/_api/uidata.api';
-import {
-  WdigetPros,
-  WidgetConfig,
-  WidgetData,
-  WidgetInfo,
-} from '@/_types/system/widget';
+import { getUIConfigByIdObject } from '@/_services/uidata.api';
+import { WdigetPros, WidgetConfig, WidgetInfo } from '@/_types/system/widget';
 import { FC, Suspense } from 'react';
 
 type WidgetProviderProps<T = any> = {

@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import styles from './dashboard.module.scss';
-import { getUIConfigByIdObject } from '@/_api/uidata.api';
 import Plug from '@/_shared/components/plug/plug';
 import { WidgetInfo } from '@/_types/system/widget';
 import Showcase from './_showcase/showcase';
 import { DashboardConfig } from '@/_types/system/dashboard-config';
+import { getUIConfigByIdObject } from '@/_services/uidata.api';
 
 type DashboardPageProps = {
   searchParams: DashboardConfig;
@@ -23,7 +23,8 @@ const DashboardPage: FC<DashboardPageProps> = async ({ searchParams }) => {
   if (!idObject || !from || !to) {
     return <Plug message={'Не хватает нужных параметров'} />;
   }
-  const uiConfig = getUIConfigByIdObject<DashboardUIConfig>(UI_CONFIG_NAME);
+  const uiConfig =
+    await getUIConfigByIdObject<DashboardUIConfig>(UI_CONFIG_NAME);
   if (!uiConfig) {
     return <Plug message={'Отсутствует конфигурационный файл '} />;
   }

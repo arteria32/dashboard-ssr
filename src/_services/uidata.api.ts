@@ -1,9 +1,9 @@
 import mocs from './mocs/mocs-uidata.json';
 
-export function getUIConfigByIdObject<T>(
+export async function getUIConfigByIdObject<T>(
   configName: string,
   idObject?: string,
-): T {
+): Promise<T> {
   console.log('getUIConfigByIdObject', configName, idObject);
   const key = configName;
   const res = (mocs as any)[key];
