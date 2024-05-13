@@ -6,12 +6,17 @@
     flex-direction: row;
     align-items: stretch;
     justify-content: space-between;
+    
 }
 
 .widget {
-    flex: 1 1 auto;
+    flex: 1 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 0 var(--space-s); 
+    &:not(:last-child) {
+        border-right: var(--control-border-width) solid var(--color-bg-border);
+    }
 }

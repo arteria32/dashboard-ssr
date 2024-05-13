@@ -15,15 +15,20 @@
         "children": [
             {
                 "name": "Widget1",
-                "displayName": "Виджет 1"
+                "displayName": "Виджет 1",
+                "type":"Chart"
             },
             {
                 "name": "Widget2",
-                "displayName": "Виджет 2"
+                "displayName": "Виджет 2",
+                "type":"ComparingParams"
+
             },
             {
                 "name": "Widget3",
-                "displayName": "Виджет 3"
+                "displayName": "Виджет 3",
+                "type":"PropsViewer"
+
             }
         ]
     },

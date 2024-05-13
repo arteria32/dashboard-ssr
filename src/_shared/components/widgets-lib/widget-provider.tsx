@@ -15,19 +15,10 @@ const WidgetProvider: FC<WidgetProviderProps> = async ({
   getWidgetData = () => null,
   children,
 }) => {
-  console.log(
-    'renderWidgetProvider',
-    widgetInfo,
-    dataWidget,
-    getWidgetData,
-    children,
-  );
   //Проверяем есть ли виджет дата, если она есть, то сразу рисуем widget
   const uiConfig = await getUIConfigByIdObject<WidgetConfig>(widgetInfo.name);
   if (!uiConfig) return <>Нет конфиг файла</>;
   const data = dataWidget ?? (await getWidgetData(uiConfig));
-
-  console.log('data', data);
   return <>{children({ data, config: uiConfig })}</>;
 };
 

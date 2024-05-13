@@ -38,6 +38,7 @@
         background: var(--color-bg-secondary);
         padding: var(--space-xs);
         display: flex;
+        overflow: hidden;
     }
 
     .showcase {

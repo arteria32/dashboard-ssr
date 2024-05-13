@@ -12,6 +12,7 @@
     "@consta/charts": "^1.0.0",
     "@consta/uikit": "^5.3.1",
     "classnames": "^2.5.1",
+    "echarts": "^5.5.0",
     "next": "14.2.3",
     "puppeteer": "^22.8.0",
     "react": "^18",
