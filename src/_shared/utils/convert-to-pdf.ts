@@ -6,7 +6,12 @@ export async function convertHTMLToPDF(
   pdfFilePath: string,
   hiddingTags: string[] = [HEADER_ID, 'test2'],
 ): Promise<Buffer> {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    defaultViewport: {
+      width: 1920,
+      height: 1080,
+    },
+  });
   const page = await browser.newPage();
   await page.goto(url);
 
@@ -14,7 +19,7 @@ export async function convertHTMLToPDF(
 
   //Wait rendering all charts
   try {
-    await page.waitForSelector('.qwgwqgcharts-instance', { timeout: 5000 });
+    await page.waitForSelector('.echarts-instance', { timeout: 15000 });
   } catch (error) {
     console.error(error);
   }
