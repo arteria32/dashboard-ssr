@@ -11,11 +11,20 @@ export async function convertHTMLToPDF(
   await page.goto(url);
 
   page.addStyleTag({ content: `#${hiddingTags.join(',#')}{display:none}` });
+
+  //Wait rendering all charts
+  try {
+    await page.waitForSelector('.qwgwqgcharts-instance', { timeout: 5000 });
+  } catch (error) {
+    console.error(error);
+  }
   // Generate PDF
+
   const resPdf = await page.pdf({
     path: `${pdfFilePath}.pdf`,
-    format: 'A4',
     printBackground: true,
+    width: '1920px',
+    height: '1080px',
   });
 
   //close the browser
