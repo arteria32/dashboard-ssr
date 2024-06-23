@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { Block, DashboardStructure } from '@/_types/features/dashboard';
-import mongoose from 'mongoose';
+import { randomUUID } from 'crypto';
+import mongoose, { Schema } from 'mongoose';
 
 export enum DashboardState {
   Idle = 'idle',
@@ -18,8 +19,14 @@ export interface Dashboard extends DashboardStructure, mongoose.Document {
   state: DashboardState;
 }
 
+const BlockSchema = new mongoose.Schema<Block>({});
+
 const DashboardSchema = new mongoose.Schema<Dashboard>(
   {
+    _id: {
+      type: mongoose.Schema.Types.UUID,
+      default: () => randomUUID(),
+    },
     createdAt: {
       type: Date,
       default: () => Date.now(),
@@ -35,6 +42,10 @@ const DashboardSchema = new mongoose.Schema<Dashboard>(
     },
     key: {
       type: String,
+    },
+    content: {
+      type: [BlockSchema],
+      default: [],
     },
   },
   {
