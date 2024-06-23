@@ -2,7 +2,7 @@ import { convertHTMLToPDF } from '@/_shared/utils/convert-to-pdf';
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
-  const filteredUrl = url.href.replace('/api/export', '');
+  const filteredUrl = url.href.replace('/api/reports/export', '');
   const data = await convertHTMLToPDF(filteredUrl);
   return new Response(data, {
     headers: {
