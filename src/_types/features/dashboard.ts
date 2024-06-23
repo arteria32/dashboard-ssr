@@ -15,6 +15,6 @@ export type Block = {
 
 export type DashboardStructure = {
   key: string;
-  style: CSS.Properties;
+  style?: CSS.Properties;
   content: Block[];
 };

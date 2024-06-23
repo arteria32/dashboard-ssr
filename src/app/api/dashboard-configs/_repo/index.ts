@@ -1,6 +1,6 @@
 import getConfig from 'next/config';
 import mongoose from 'mongoose';
-import DashboardSchema from '../_models/Dashboard';
+import DashboardsRepo from '../_models/Dashboard';
 
 const { serverRuntimeConfig } = getConfig();
 
@@ -10,5 +10,5 @@ mongoose.connect(
 mongoose.Promise = global.Promise;
 
 export const db = {
-  Dashboards: DashboardSchema,
+  DashboardsRepo: DashboardsRepo,
 };

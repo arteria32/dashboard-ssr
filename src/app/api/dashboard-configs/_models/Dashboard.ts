@@ -1,4 +1,5 @@
-import { DashboardStructure } from '@/_types/features/dashboard';
+/* eslint-disable no-param-reassign */
+import { Block, DashboardStructure } from '@/_types/features/dashboard';
 import mongoose from 'mongoose';
 
 export enum DashboardState {
@@ -21,12 +22,19 @@ const DashboardSchema = new mongoose.Schema<Dashboard>(
   {
     createdAt: {
       type: Date,
-      default: Date.now(),
+      default: () => Date.now(),
+    },
+    modifiedAt: {
+      type: Date,
+      default: () => Date.now(),
     },
     state: {
       type: String,
       enum: DashboardState,
       default: DashboardState.Idle,
+    },
+    key: {
+      type: String,
     },
   },
   {
@@ -35,8 +43,22 @@ const DashboardSchema = new mongoose.Schema<Dashboard>(
         return this.findById(id);
       },
     },
+    toJSON: {
+      virtuals: true,
+      versionKey: false,
+      transform: function (doc, ret) {
+        delete ret._id;
+        delete ret.hash;
+      },
+    },
+    toObject: {
+      transform: function (doc, ret) {
+        delete ret._id;
+        delete ret.hash;
+      },
+    },
   },
 );
 
-export default mongoose.models.Dashboard ||
-  mongoose.model<Dashboard>('Dashboard', DashboardSchema);
+export default mongoose.models.DashboardsRepo ||
+  mongoose.model<Dashboard>('DashboardsRepo', DashboardSchema);
