@@ -10,5 +10,5 @@ export async function POST(request: Request) {
   const body = await request.json();
   if (!body) return new Response('empty body', { status: 500 });
   const newBoard = await dashboardsRepo.create(body);
-  return Response.json(newBoard);
+  return Response.json(newBoard, { status: 201 });
 }
