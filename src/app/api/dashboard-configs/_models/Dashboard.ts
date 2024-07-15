@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { Block, DashboardStructure } from '@/_types/features/dashboard';
 import { randomUUID } from 'crypto';
-import mongoose, { Schema } from 'mongoose';
+import mongoose from 'mongoose';
 
 export enum DashboardState {
   Idle = 'idle',
