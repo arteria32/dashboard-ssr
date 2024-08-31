@@ -2,7 +2,7 @@
 /* eslint-disable new-cap */
 import { Theme, presetGpnDefault } from '@consta/uikit/Theme';
 import { Inter } from 'next/font/google';
-import Header from './_header/header';
+import Header from '../_components/_header/header';
 import './globals.css';
 import styles from './page.module.css';
 import { HEADER_ID } from '@/_shared/consts/page-tags';

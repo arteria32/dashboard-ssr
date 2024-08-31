@@ -1,20 +1,14 @@
-import { FC } from 'react';
-import styles from './dashboard.module.scss';
 import Plug from '@/_shared/components/plug/plug';
-import { WidgetInfo } from '@/_types/system/widget';
-import Showcase from './_showcase/showcase';
 import { DashboardConfig } from '@/_types/system/dashboard-config';
-import { getUIConfigByIdObject } from '@/_services/uidata.api';
+import { FC } from 'react';
+import { PageConfigClient } from '../_sdk/PageConfigClient';
+import styles from './dashboard.module.scss';
 
 type DashboardPageProps = {
   searchParams: DashboardConfig;
 };
 
-type DashboardUIConfig = {
-  showcaseConfig: WidgetInfo;
-  mainBlockConfig: WidgetInfo;
-};
-const UI_CONFIG_NAME = 'MainPage';
+const UI_CONFIG_NAME = 'goodDashboard';
 
 export const dynamic = 'force-dynamic';
 
@@ -23,8 +17,7 @@ const DashboardPage: FC<DashboardPageProps> = async ({ searchParams }) => {
   if (!idObject || !from || !to) {
     return <Plug message={'Не хватает нужных параметров'} />;
   }
-  const uiConfig =
-    await getUIConfigByIdObject<DashboardUIConfig>(UI_CONFIG_NAME);
+  const uiConfig = await PageConfigClient.getPageConfigByKey(UI_CONFIG_NAME);
   if (!uiConfig) {
     return <Plug message={'Отсутствует конфигурационный файл '} />;
   }
@@ -32,10 +25,10 @@ const DashboardPage: FC<DashboardPageProps> = async ({ searchParams }) => {
   return (
     <main className={styles.page}>
       <section className={styles.showcase}>
-        <Showcase
+        {/* <Showcase
           componentConfig={uiConfig.showcaseConfig}
           dataConfig={{ idObject, from, to }}
-        />
+        /> */}
       </section>
       <section className={styles.mainBlock}>heatmap</section>
     </main>
