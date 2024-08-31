@@ -8,7 +8,7 @@ type DashboardPageProps = {
   searchParams: DashboardConfig;
 };
 
-const UI_CONFIG_NAME = 'goodDashboard';
+const UI_CONFIG_NAME = 'TEST_CONFIG_DASHBOARD_8';
 
 export const dynamic = 'force-dynamic';
 
@@ -18,6 +18,7 @@ const DashboardPage: FC<DashboardPageProps> = async ({ searchParams }) => {
     return <Plug message={'Не хватает нужных параметров'} />;
   }
   const uiConfig = await PageConfigClient.getPageConfigByKey(UI_CONFIG_NAME);
+  console.log('uiConfig', uiConfig);
   if (!uiConfig) {
     return <Plug message={'Отсутствует конфигурационный файл '} />;
   }
