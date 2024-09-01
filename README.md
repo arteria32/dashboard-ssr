@@ -14,14 +14,17 @@ npm run dev
 
 ### Planned
 
-- [ ] Add POST/PATCH handlers to update pages
+- [ ] Provide styles props to container and widget components
+- [ ] Implement edit tools for widgets and containers
 - [ ] Add validation for post/patch handlers
-
+- [ ] Create model for widget configs
+- [ ] Add suporting integretion by iframe
 
 ### In Progress
 
 
 ### Done ✓
 
+- [X] Add POST/PATCH handlers to update pages
 - [x] FE. Factory for creation widget on page
 
