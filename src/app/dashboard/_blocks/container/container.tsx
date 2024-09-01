@@ -6,7 +6,6 @@ import { renderBlock } from '..';
 type ContainerProps = Block;
 
 const ContainerComponent: FC<ContainerProps> = ({ body }) => {
-  console.log('body', body);
   return (
     <section className={styles.container}>
       {body?.map((block) => (

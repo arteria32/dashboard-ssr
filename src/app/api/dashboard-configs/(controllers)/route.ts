@@ -7,7 +7,7 @@ export async function GET(_request: Request) {
 
 export async function POST(request: Request) {
   const body = await request.json();
-  if (!body) return new Response('empty body', { status: 500 });
+  if (!body) return new Response('empty body', { status: 400 });
   const newBoard = await DashboardRepository.create(body);
 
   return Response.json(newBoard, { status: 201 });

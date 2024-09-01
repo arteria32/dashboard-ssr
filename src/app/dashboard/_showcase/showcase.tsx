@@ -14,7 +14,6 @@ type ShowcaseProps = {
 
 //Информ витрина
 const Showcase: FC<ShowcaseProps> = async ({ componentConfig, dataConfig }) => {
-  console.log('renderShowCase', componentConfig, dataConfig);
   const uiConfig = await getUIConfigByIdObject<WidgetConfig>(
     componentConfig.name,
   );

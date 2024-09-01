@@ -17,7 +17,6 @@ export const dynamic = 'force-dynamic';
 
 const DashboardPage: FC<DashboardPageProps> = async () => {
   const uiConfig = await PageConfigClient.getPageConfigByKey(UI_CONFIG_NAME);
-  console.log('uiConfig', uiConfig);
   if (!uiConfig) {
     return <Plug message={'Отсутствует конфигурационный файл '} />;
   }
