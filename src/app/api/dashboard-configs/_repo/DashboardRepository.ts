@@ -16,7 +16,6 @@ async function getAll() {
 
 async function create(dashnoardDTO: DashboardStructure) {
   const dashboard = new DashboardModel(dashnoardDTO);
-  console.log('BLOCKMODEL', dashboard);
   return await dashboard.save();
 }
 
