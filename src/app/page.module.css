@@ -16,9 +16,9 @@
 }
 
 .header{
-  flex: 0 0 var(--space-5xl);
+  flex: 0 0  var(--g-text-display-3-line-height);
   overflow: hidden;
-  background: var(--color-bg-secondary);
+  background:var(--g-color-base-generic);
 }
 .router{
   flex: 1 1 auto;

@@ -4,10 +4,11 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: var(--space-xs);
-    padding: var(--space-xs);
-    border-radius: var(--control-radius);
-    border: var(--control-border-width) solid var(--color-bg-border);
-    background: var(--color-bg-secondary);
-    padding: var(--space-xs);
+    gap: var(--g-spacing-1);
+    padding: var(--g-spacing-1);
+
+    border-radius: var(--g-border-radius-xs);
+    border: var(--g-spacing-half) solid var(--g-color-line-generic);
+    background:var(--g-color-base-generic);
+    padding: var(--g-spacing-1);
 }

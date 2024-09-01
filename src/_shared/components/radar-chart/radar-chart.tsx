@@ -1,4 +1,3 @@
-'use client';
 import { EChartsOption } from 'echarts';
 import { ReactECharts } from '../echarts-wrapper/echarts-wrapper';
 

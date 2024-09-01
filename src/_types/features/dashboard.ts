@@ -9,6 +9,7 @@ export enum WidgetEnum {
 export type BlockType = ContainerEnum | WidgetEnum;
 
 export type Block = {
+  id: string;
   key: string; //uniq key
   name?: string;
   style?: CSS.Properties;
@@ -18,6 +19,7 @@ export type Block = {
 };
 
 export type DashboardStructure = {
+  id: string;
   key: string;
   style?: CSS.Properties;
   content: Block[];
