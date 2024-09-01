@@ -1,5 +1,10 @@
 /* eslint-disable no-param-reassign */
-import { Block, DashboardStructure } from '@/_types/features/dashboard';
+import {
+  Block,
+  ContainerEnum,
+  DashboardStructure,
+  WidgetEnum,
+} from '@/_types/features/dashboard';
 import { randomUUID } from 'crypto';
 import mongoose from 'mongoose';
 
@@ -19,7 +24,44 @@ export interface Dashboard extends DashboardStructure, mongoose.Document {
   state: DashboardState;
 }
 
-const BlockSchema = new mongoose.Schema<Block>({});
+const BlockSchema = new mongoose.Schema<Block>(
+  {
+    type: {
+      type: String,
+      enum: [...Object.values(WidgetEnum), ...Object.values(ContainerEnum)],
+      default: WidgetEnum.BasisWidget,
+    },
+    description: {
+      type: String,
+    },
+    name: {
+      type: String,
+    },
+  },
+  {
+    toJSON: {
+      virtuals: true,
+      versionKey: false,
+      transform: function (doc, ret) {
+        delete ret._id;
+        delete ret.hash;
+      },
+    },
+    toObject: {
+      transform: function (doc, ret) {
+        delete ret._id;
+        delete ret.hash;
+      },
+    },
+  },
+);
+//implement a nesting structure (https://github.com/Automattic/mongoose/issues/13717?ysclid=m0i5y0oiwn212956391)
+BlockSchema.add({
+  body: {
+    type: [BlockSchema],
+    default: undefined,
+  },
+});
 
 const DashboardSchema = new mongoose.Schema<Dashboard>(
   {
@@ -71,5 +113,10 @@ const DashboardSchema = new mongoose.Schema<Dashboard>(
   },
 );
 
-export default mongoose.models.DashboardsRepo ||
-  mongoose.model<Dashboard>('DashboardsRepo', DashboardSchema);
+export const DashboardModel =
+  mongoose.models.DashboardModel ||
+  mongoose.model<Dashboard>('DashboardModel', DashboardSchema);
+
+export const BlockModel =
+  mongoose.models.BlockModel ||
+  mongoose.model<Block>('BlockModel', BlockSchema);

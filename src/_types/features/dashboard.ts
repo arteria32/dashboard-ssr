@@ -1,10 +1,15 @@
 import type * as CSS from 'csstype';
 
-export enum BlockType {
-  Container = 'container',
-  Widget = 'widget',
+export enum ContainerEnum {
+  BasicContainer = 'container',
 }
+export enum WidgetEnum {
+  BasisWidget = 'widget',
+}
+export type BlockType = ContainerEnum | WidgetEnum;
+
 export type Block = {
+  id: string;
   key: string; //uniq key
   name?: string;
   style?: CSS.Properties;
@@ -14,6 +19,7 @@ export type Block = {
 };
 
 export type DashboardStructure = {
+  id: string;
   key: string;
   style?: CSS.Properties;
   content: Block[];

@@ -1,43 +1,33 @@
-import { FC } from 'react';
-import styles from './dashboard.module.scss';
 import Plug from '@/_shared/components/plug/plug';
-import { WidgetInfo } from '@/_types/system/widget';
-import Showcase from './_showcase/showcase';
 import { DashboardConfig } from '@/_types/system/dashboard-config';
-import { getUIConfigByIdObject } from '@/_services/uidata.api';
+import { FC, Fragment } from 'react';
+import { PageConfigClient } from '../_sdk/PageConfigClient';
+import { renderBlock } from './_blocks';
+import styles from './dashboard.module.scss';
+import '@gravity-ui/uikit/styles/fonts.css';
+import '@gravity-ui/uikit/styles/styles.css';
 
 type DashboardPageProps = {
   searchParams: DashboardConfig;
 };
 
-type DashboardUIConfig = {
-  showcaseConfig: WidgetInfo;
-  mainBlockConfig: WidgetInfo;
-};
-const UI_CONFIG_NAME = 'MainPage';
+const UI_CONFIG_NAME = 'TEST_CONFIG_DASHBOARD_8';
 
 export const dynamic = 'force-dynamic';
 
-const DashboardPage: FC<DashboardPageProps> = async ({ searchParams }) => {
-  const { idObject, from, to } = searchParams;
-  if (!idObject || !from || !to) {
-    return <Plug message={'Не хватает нужных параметров'} />;
-  }
-  const uiConfig =
-    await getUIConfigByIdObject<DashboardUIConfig>(UI_CONFIG_NAME);
+const DashboardPage: FC<DashboardPageProps> = async () => {
+  const uiConfig = await PageConfigClient.getPageConfigByKey(UI_CONFIG_NAME);
+  console.log('uiConfig', uiConfig);
   if (!uiConfig) {
     return <Plug message={'Отсутствует конфигурационный файл '} />;
   }
 
   return (
     <main className={styles.page}>
-      <section className={styles.showcase}>
-        <Showcase
-          componentConfig={uiConfig.showcaseConfig}
-          dataConfig={{ idObject, from, to }}
-        />
-      </section>
-      <section className={styles.mainBlock}>heatmap</section>
+      <h3>{uiConfig.key}</h3>
+      {uiConfig.content.map((block) => (
+        <Fragment key={block.id}>{renderBlock(block)}</Fragment>
+      ))}
     </main>
   );
 };

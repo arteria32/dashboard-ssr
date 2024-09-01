@@ -1,4 +1,4 @@
-import { dashboardsRepo } from '../../_repo/dashboards-repo';
+import { DashboardRepository } from '../../_repo/DashboardRepository';
 
 type GetPageByKeyParams = {
   pageKey: string;
@@ -8,6 +8,6 @@ export async function GET(
   { params }: { params: GetPageByKeyParams },
 ) {
   const { pageKey } = params;
-  const result = await dashboardsRepo.getByKey(pageKey);
+  const result = await DashboardRepository.getByKey(pageKey);
   return Response.json(result);
 }

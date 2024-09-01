@@ -20,7 +20,8 @@ npm run dev
 
 ### In Progress
 
-- [ ] FE. Factory for creation widget on page
 
 ### Done ✓
+
+- [x] FE. Factory for creation widget on page
 
