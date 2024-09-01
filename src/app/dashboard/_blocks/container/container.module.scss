@@ -1,5 +1,11 @@
 .container{
-    flex: 1 0 auto;
+    flex: 1 0;
     border-radius: var(--g-border-radius-xs);
     border: var(--g-spacing-half) solid var(--g-color-line-generic);
+    gap: var(--g-spacing-2);
+    padding: vat(--g-spacing-1);
+    align-items: stretch;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
