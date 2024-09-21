@@ -5,9 +5,9 @@ import { DashboardStructure } from '@/_types/features/dashboard';
 export class PageConfigClient {
   private static basePath = `${process.env.BASE_URL || 'NOT_DEFINED_URL'}/api/dashboard-configs`;
   static async getPageConfigByKey(key: string): Promise<DashboardStructure> {
-    const result: DashboardStructure = await fetch(
-      `${this.basePath}/${key}`,
-    ).then((res) => res.json());
+    const result: DashboardStructure = await fetch(`${this.basePath}/${key}`, {
+      cache: 'no-cache',
+    }).then((res) => res.json());
     return result;
   }
 }

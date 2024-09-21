@@ -5,7 +5,9 @@ export enum ContainerEnum {
 }
 export enum WidgetEnum {
   BasisWidget = 'widget',
+  IFrame = 'iframe',
 }
+
 export type BlockType = ContainerEnum | WidgetEnum;
 
 export type Block = {
