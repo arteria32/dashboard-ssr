@@ -3,7 +3,10 @@
     display: flex;
     flex-direction: column;
     flex: auto;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
     gap: var(--g-spacing-2);
+    .frame{
+        flex: 1 0 100%;
+    }
 }

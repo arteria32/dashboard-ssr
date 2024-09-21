@@ -6,5 +6,13 @@ import { Card } from '@gravity-ui/uikit';
 type IFrameWidgetProps = Block;
 
 export const IFrameWidget: FC<IFrameWidgetProps> = () => {
-  return <Card className={styles.body}>IframeWidget</Card>;
+  return (
+    <Card className={styles.body}>
+      <iframe
+        className={styles.frame}
+        allowFullScreen
+        src="https://www.example.com/"
+      />
+    </Card>
+  );
 };
