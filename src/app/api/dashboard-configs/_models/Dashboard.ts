@@ -37,6 +37,9 @@ const BlockSchema = new mongoose.Schema<Block>(
     name: {
       type: String,
     },
+    source: {
+      type: String,
+    },
   },
   {
     toJSON: {

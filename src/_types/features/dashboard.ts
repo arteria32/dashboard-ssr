@@ -10,7 +10,7 @@ export enum WidgetEnum {
 
 export type BlockType = ContainerEnum | WidgetEnum;
 
-export type Block = {
+export type BasicBlock = {
   id: string;
   key: string; //uniq key
   name?: string;
@@ -19,6 +19,9 @@ export type Block = {
   body?: Block[];
   description?: string;
 };
+
+export type IFrameWidgetBlock = BasicBlock & { source: string };
+export type Block = BasicBlock | IFrameWidgetBlock;
 
 export type DashboardStructure = {
   id: string;

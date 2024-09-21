@@ -1,8 +1,8 @@
 import { Block } from '@/_types/features/dashboard';
 import { FC, PropsWithChildren } from 'react';
 import styles from './widget-wrapper.module.scss';
-import { Card, Icon, Text, Tooltip } from '@gravity-ui/uikit';
-import { CircleInfo } from '@gravity-ui/icons';
+import { Button, Card, Icon, Text, Tooltip } from '@gravity-ui/uikit';
+import { ArrowUpRightFromSquare, CircleInfo } from '@gravity-ui/icons';
 
 type ContainerProps = Block & PropsWithChildren;
 
@@ -21,6 +21,9 @@ const WidgetWrapper: FC<ContainerProps> = ({ name, description, children }) => {
               <Icon data={CircleInfo} />
             </Tooltip>
           )}
+          <Button>
+            <Icon data={ArrowUpRightFromSquare} />
+          </Button>
         </div>
       </div>
       <>{children}</>

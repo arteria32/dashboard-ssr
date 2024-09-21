@@ -4,20 +4,22 @@ import PlugWidgetComponent from './plug-widget/plug-widget';
 import { FC, ReactNode } from 'react';
 import WidgetWrapper from './widget-wrapper/widget-wrapper';
 import { IFrameWidget } from './iframe/iframe-widget.module';
+import { isIFrameWidget } from './type-guards';
 
 const WIDGET_TYPES = new Set<string>(Object.values(WidgetEnum));
 
 export const renderBlock = (block: Block) => {
   if (WIDGET_TYPES.has(block.type)) {
     let widgetComponent: ReactNode = <>UndefiedType</>;
-    switch (block.type) {
-      case WidgetEnum.IFrame:
-        widgetComponent = <IFrameWidget {...block} />;
-        break;
-      case WidgetEnum.BasisWidget:
-      default:
-        widgetComponent = <PlugWidgetComponent {...block} />;
-        break;
+    if (isIFrameWidget(block)) {
+      widgetComponent = <IFrameWidget {...block} />;
+    } else {
+      switch (block.type) {
+        case WidgetEnum.BasisWidget:
+        default:
+          widgetComponent = <PlugWidgetComponent {...block} />;
+          break;
+      }
     }
     return <WidgetWrapper {...block}>{widgetComponent}</WidgetWrapper>;
   }
