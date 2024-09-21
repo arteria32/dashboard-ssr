@@ -11,6 +11,7 @@ export const DashboardRepository = {
   getAllDashboardBlocksByKey,
   getBlockByDashboardKeyAndBlockId,
   update,
+  deleteDashboardByKey,
 };
 
 async function getAll() {
@@ -58,4 +59,15 @@ async function getBlockByDashboardKeyAndBlockId(
 ): Promise<Block | null> {
   const blocks = await getAllDashboardBlocksByKey(pageKey);
   return blocks.find(({ id }) => id === blockId) ?? null;
+}
+
+async function deleteDashboardByKey(
+  key: string,
+  isForce?: boolean,
+): Promise<void> {
+  if (isForce) {
+    await DashboardModel.deleteMany({ key });
+  } else {
+    await DashboardModel.deleteOne({ key });
+  }
 }
