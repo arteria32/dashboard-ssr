@@ -51,6 +51,8 @@ const BlockSchema = new mongoose.Schema<Block>(
       },
     },
     toObject: {
+      virtuals: true,
+      versionKey: false,
       transform: function (doc, ret) {
         delete ret._id;
         delete ret.hash;
@@ -108,6 +110,8 @@ const DashboardSchema = new mongoose.Schema<Dashboard>(
       },
     },
     toObject: {
+      virtuals: true,
+      versionKey: false,
       transform: function (doc, ret) {
         delete ret._id;
         delete ret.hash;

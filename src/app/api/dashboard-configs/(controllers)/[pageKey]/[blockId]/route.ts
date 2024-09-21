@@ -10,21 +10,10 @@ export async function GET(
   { params }: { params: GetBlocksByKeyParams },
 ) {
   const { pageKey, blockId } = params;
-  const result = DashboardRepository.getBlockByDashboardKeyAndBlockId(
+  const result = await DashboardRepository.getBlockByDashboardKeyAndBlockId(
     pageKey,
     blockId,
   );
-  return Response.json(result);
-}
 
-export async function PUT(
-  request: Request,
-  { params }: { params: GetBlocksByKeyParams },
-) {
-  const { pageKey, blockId } = params;
-  const result = DashboardRepository.getBlockByDashboardKeyAndBlockId(
-    pageKey,
-    blockId,
-  );
   return Response.json(result);
 }
