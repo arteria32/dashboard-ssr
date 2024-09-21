@@ -22,7 +22,7 @@ npm run dev
 ### In Progress
 
 - [ ] Add suporting integretion by iframe
-- [ ] Add popups and  separeta block page
+- [ ] Add popups and separeted block pages
 
 ### Done ✓
 
