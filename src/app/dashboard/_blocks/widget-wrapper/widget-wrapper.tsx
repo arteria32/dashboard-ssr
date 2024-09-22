@@ -1,12 +1,19 @@
 import { Block } from '@/_types/features/dashboard';
+import { ArrowUpRightFromSquare, CircleInfo } from '@gravity-ui/icons';
+import { Card, Icon, Text, Tooltip } from '@gravity-ui/uikit';
+import Link from 'next/link';
 import { FC, PropsWithChildren } from 'react';
 import styles from './widget-wrapper.module.scss';
-import { Button, Card, Icon, Text, Tooltip } from '@gravity-ui/uikit';
-import { ArrowUpRightFromSquare, CircleInfo } from '@gravity-ui/icons';
 
-type ContainerProps = Block & PropsWithChildren;
+type ContainerProps = Block & PropsWithChildren & { pageKey?: string };
 
-const WidgetWrapper: FC<ContainerProps> = ({ name, description, children }) => {
+const WidgetWrapper: FC<ContainerProps> = ({
+  id,
+  name,
+  description,
+  children,
+  pageKey,
+}) => {
   return (
     <Card className={styles.wrapper} view="filled">
       <div className={styles.header}>
@@ -21,9 +28,13 @@ const WidgetWrapper: FC<ContainerProps> = ({ name, description, children }) => {
               <Icon data={CircleInfo} />
             </Tooltip>
           )}
-          <Button>
+          <Link
+            href={`/dashboard${pageKey ? `/${pageKey}` : ''}/${id}`}
+            target="_blank"
+            rel="noreferrer"
+          >
             <Icon data={ArrowUpRightFromSquare} />
-          </Button>
+          </Link>
         </div>
       </div>
       <>{children}</>
