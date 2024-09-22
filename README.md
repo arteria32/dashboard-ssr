@@ -18,14 +18,16 @@ npm run dev
 - [ ] Implement edit tools for widgets and containers
 - [ ] Add validation for post/patch handlers
 - [ ] Create model for widget configs
+- [ ] add Share button to widget wrapper
+- [ ] Add supporting integration scripts as 
 
 ### In Progress
 
-- [ ] Add suporting integretion by iframe
-- [ ] Add popups and separeted block pages
+
 
 ### Done ✓
 
 - [X] Add POST/PATCH handlers to update pages
 - [x] FE. Factory for creation widget on page
-
+- [x] Add supporting integration by iframe
+- [x] Add popups and separeted block pages
