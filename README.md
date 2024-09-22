@@ -18,10 +18,11 @@ npm run dev
 - [ ] Implement edit tools for widgets and containers
 - [ ] Add validation for post/patch handlers
 - [ ] Create model for widget configs
-- [ ] Add suporting integretion by iframe
 
 ### In Progress
 
+- [ ] Add suporting integretion by iframe
+- [ ] Add popups and separeted block pages
 
 ### Done ✓
 
