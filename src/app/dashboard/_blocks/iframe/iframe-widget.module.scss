@@ -1,5 +1,4 @@
 .body {
-    background: var(--g-color-base-generic);
     display: flex;
     flex-direction: column;
     flex: auto;
@@ -8,5 +7,6 @@
     gap: var(--g-spacing-2);
     .frame{
         flex: 1 0 100%;
+        border: 0px;
     }
 }

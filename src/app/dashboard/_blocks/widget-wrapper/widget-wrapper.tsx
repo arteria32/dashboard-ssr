@@ -15,7 +15,7 @@ const WidgetWrapper: FC<ContainerProps> = ({
   pageKey,
 }) => {
   return (
-    <Card className={styles.wrapper} view="filled">
+    <Card className={styles.wrapper} view="raised">
       <div className={styles.header}>
         <div className={styles.left}>
           <Text ellipsis variant="body-1">
@@ -37,7 +37,7 @@ const WidgetWrapper: FC<ContainerProps> = ({
           </Link>
         </div>
       </div>
-      <>{children}</>
+      <div className={styles.body}>{children}</div>
     </Card>
   );
 };

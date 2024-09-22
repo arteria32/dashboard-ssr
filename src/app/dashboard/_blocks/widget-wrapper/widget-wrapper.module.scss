@@ -1,35 +1,42 @@
-.wrapper{
+.wrapper {
     background: var(--g-color-base-generic);
     display: flex;
     flex: auto;
     flex-direction: column;
     align-items: stretch;
-    justify-content: center;
-.header{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--g-spacing-half);
-    padding: var(--g-spacing-half);
-    flex: 0 0 var(--g-text-header-2-line-height);
-    background: var(--g-color-base-generic-medium);
-    overflow: hidden;
-    .left{
+    justify-content: start;
+
+    .header {
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
         align-items: center;
-        justify-content: flex-start;
         gap: var(--g-spacing-half);
         padding: var(--g-spacing-half);
+        flex: 0 0 var(--g-text-header-2-line-height);
+        background: var(--g-color-base-generic-medium);
+        border-radius: var(--g-border-radius-l) var(--g-border-radius-l) 0 0;
+        overflow: hidden;
+        .left {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            gap: var(--g-spacing-half);
+            padding: var(--g-spacing-half);
+        }
+
+        .right {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+            gap: var(--g-spacing-half);
+            padding: var(--g-spacing-half);
+        }
     }
-    .right{
+    .body{
+        flex: 1 1 auto;
         display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-end;
-        gap: var(--g-spacing-half);
-        padding: var(--g-spacing-half);
     }
-}
 }
