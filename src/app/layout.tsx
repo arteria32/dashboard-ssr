@@ -1,6 +1,6 @@
 /* eslint-disable new-cap */
 import { Inter } from 'next/font/google';
-import Header from '../_components/_header/header';
+import Header from '../_shared/components/header/header';
 import './globals.css';
 import styles from './page.module.css';
 import { HEADER_ID } from '@/_shared/consts/page-tags';
