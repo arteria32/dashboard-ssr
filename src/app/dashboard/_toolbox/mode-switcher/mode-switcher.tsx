@@ -2,9 +2,9 @@
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { FC, useCallback } from 'react';
-import { USER_MODE_SEARCH_KEY, UserMode, isUserMode } from './constants';
 import { Switch } from '@gravity-ui/uikit';
 import { createQueryString } from '@/_shared/utils/create-query-string';
+import { USER_MODE_SEARCH_KEY, UserMode, isUserMode } from '../../constants';
 
 const ModeSwitcher: FC = () => {
   const pathname = usePathname();

@@ -7,9 +7,9 @@ type GetBlocksByKeyParams = {
 
 export async function GET(
   request: Request,
-  { params }: { params: GetBlocksByKeyParams },
+  { params }: { params: Promise<GetBlocksByKeyParams> },
 ) {
-  const { pageKey, blockId } = params;
+  const { pageKey, blockId } = await params;
   const result = await DashboardRepository.getBlockByDashboardKeyAndBlockId(
     pageKey,
     blockId,

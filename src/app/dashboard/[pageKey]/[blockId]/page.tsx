@@ -1,5 +1,4 @@
 import Plug from '@/_shared/components/plug/plug';
-import { DashboardConfig } from '@/_types/system/dashboard-config';
 import { PageConfigClient } from '@/app/_sdk/PageConfigClient';
 import '@gravity-ui/uikit/styles/fonts.css';
 import '@gravity-ui/uikit/styles/styles.css';
@@ -9,13 +8,11 @@ import PlugWidgetComponent from '../../_blocks/plug-widget/plug-widget';
 import { isIFrameWidget } from '../../_blocks/type-guards';
 
 type BlockPageProps = {
-  searchParams: DashboardConfig;
-  params: { pageKey: string; blockId: string };
+  params: Promise<{ pageKey: string; blockId: string }>;
 };
 
-const BlockPage: FC<BlockPageProps> = async ({
-  params: { pageKey, blockId },
-}) => {
+const BlockPage: FC<BlockPageProps> = async ({ params }) => {
+  const { pageKey, blockId } = await params;
   const block = await PageConfigClient.getBlockConfigByPageKeyAndBlockId(
     pageKey,
     blockId,
