@@ -23,7 +23,7 @@ npm run dev
 
 ### In Progress
 
-
+- [ ] Implement edit tools for widgets and containers
 
 ### Done ✓
 
