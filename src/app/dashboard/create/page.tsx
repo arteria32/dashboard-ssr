@@ -1,6 +1,6 @@
 import { Flex, Text } from '@gravity-ui/uikit';
 import '@gravity-ui/uikit/styles/fonts.css';
-import '@gravity-ui/uiOkit/styles/styles.css';
+import '@gravity-ui/uikit/styles/styles.css';
 import { FC } from 'react';
 import styles from './create.module.scss';
 
