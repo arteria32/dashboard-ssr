@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import styles from './toolbox.module.scss';
+import ModeSwitcher from './mode-switcher/mode-switcher';
 
 // const getDateRangeFromConfig = (
 //   config: DashboardConfig,
@@ -45,7 +46,9 @@ export default function Toolbox() {
   return (
     <div className={styles.main}>
       <section className={cn(styles.block, styles.left)}>left</section>
-      <section className={cn(styles.block, styles.right)}>right</section>
+      <section className={cn(styles.block, styles.right)}>
+        <ModeSwitcher />
+      </section>
     </div>
   );
 }

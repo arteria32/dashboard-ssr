@@ -10,7 +10,7 @@
 }
 
 .toolbox {
-    flex: 0 0 var(--g-spacing-5);
+    flex:0 0 fit-content;
     border-radius: var(--g-border-radius-xs);
     border: var(--g-spacing-half) solid var(--g-color-line-generic);
     overflow: hidden;
