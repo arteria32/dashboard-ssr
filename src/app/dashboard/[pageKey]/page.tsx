@@ -1,13 +1,12 @@
 import Plug from '@/_shared/components/plug/plug';
 import '@gravity-ui/uikit/styles/fonts.css';
 import '@gravity-ui/uikit/styles/styles.css';
-import { useRouter } from 'next/router';
-import { FC, Fragment, use } from 'react';
+import { FC } from 'react';
 import { PageConfigClient } from '../../_sdk/PageConfigClient';
-import { renderBlock } from '../_blocks';
-import { USER_MODE_SEARCH_KEY, UserMode, isUserMode } from '../constants';
+import EditDashboardWrapper from './_edit-dashboard/edit-dashboard';
+import { UserMode, isUserMode } from '../constants';
 import styles from '../dashboard.module.scss';
-
+import ViewDashboardWrapper from './_view-dashboard/view-dashboard';
 type DashboardPageProps = {
   searchParams: Promise<{
     mode: string;
@@ -35,9 +34,11 @@ const DashboardPage: FC<DashboardPageProps> = async ({
   return (
     <main className={styles.page}>
       <h3>{uiConfig.key}</h3>
-      {uiConfig.content.map((block) => (
-        <Fragment key={block.id}>{renderBlock(block, pageKey)}</Fragment>
-      ))}
+      {userMode === UserMode.View ? (
+        <ViewDashboardWrapper dashboard={uiConfig} />
+      ) : (
+        <EditDashboardWrapper dashboard={uiConfig} />
+      )}
     </main>
   );
 };

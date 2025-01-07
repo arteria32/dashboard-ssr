@@ -5,10 +5,9 @@ type PageByKeyParams = {
 };
 export async function GET(
   request: Request,
-  { params }: { params: PageByKeyParams },
+  { params }: { params: Promise<PageByKeyParams> },
 ) {
-  console.log('GETPageByKeyParams', params);
-  const { pageKey } = params;
+  const { pageKey } = await params;
   const result = await DashboardRepository.getByKey(pageKey);
   return Response.json(result);
 }

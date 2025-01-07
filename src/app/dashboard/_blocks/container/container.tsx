@@ -1,15 +1,26 @@
-import { Block } from '@/_types/features/dashboard';
 import { FC, Fragment } from 'react';
+import DashboardBlock from '..';
+import { DashboardBlockProps } from '../types';
 import styles from './container.module.scss';
-import { renderBlock } from '..';
 
-type ContainerProps = Block & { pageKey?: string };
-
-const ContainerComponent: FC<ContainerProps> = ({ body, pageKey }) => {
+const ContainerComponent: FC<DashboardBlockProps> = ({
+  block,
+  pageKey,
+  renderWidget,
+}) => {
+  const { body } = block;
   return (
     <section className={styles.container}>
-      {body?.map((block) => (
-        <Fragment key={block.id}>{renderBlock(block, pageKey)}</Fragment>
+      {body?.map((item) => (
+        <Fragment key={item.id}>
+          {
+            <DashboardBlock
+              block={item}
+              pageKey={pageKey}
+              renderWidget={renderWidget}
+            />
+          }
+        </Fragment>
       ))}
     </section>
   );

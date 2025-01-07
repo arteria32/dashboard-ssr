@@ -1,0 +1,9 @@
+.wrapper{
+    background: var(--g-color-base-generic);
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: start;
+    border: 1px dotted red;
+}

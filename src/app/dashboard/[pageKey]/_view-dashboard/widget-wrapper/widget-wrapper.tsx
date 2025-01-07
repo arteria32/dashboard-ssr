@@ -1,19 +1,15 @@
-import { Block } from '@/_types/features/dashboard';
 import { ArrowUpRightFromSquare, CircleInfo } from '@gravity-ui/icons';
 import { Card, Icon, Text, Tooltip } from '@gravity-ui/uikit';
 import Link from 'next/link';
-import { FC, PropsWithChildren } from 'react';
+import { WidgetWrapperProps } from '../../../_blocks/types';
 import styles from './widget-wrapper.module.scss';
 
-type ContainerProps = Block & PropsWithChildren & { pageKey?: string };
-
-const WidgetWrapper: FC<ContainerProps> = ({
-  id,
-  name,
-  description,
+const ViewWidgetWrapper = ({
+  block,
   children,
   pageKey,
-}) => {
+}: WidgetWrapperProps) => {
+  const { id, name, description } = block;
   return (
     <Card className={styles.wrapper} view="raised">
       <div className={styles.header}>
@@ -42,4 +38,4 @@ const WidgetWrapper: FC<ContainerProps> = ({
   );
 };
 
-export default WidgetWrapper;
+export default ViewWidgetWrapper;

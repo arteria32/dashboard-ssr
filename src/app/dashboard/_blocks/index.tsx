@@ -1,16 +1,20 @@
-import { Block, ContainerEnum, WidgetEnum } from '@/_types/features/dashboard';
-import { ReactNode } from 'react';
+import { ContainerEnum, WidgetEnum } from '@/_types/features/dashboard';
+import { FC, ReactNode } from 'react';
 import ContainerComponent from './container/container';
 import { IFrameWidget } from './iframe/iframe-widget.module';
 import PlugWidgetComponent from './plug-widget/plug-widget';
 import { isIFrameWidget } from './type-guards';
-import WidgetWrapper from './widget-wrapper/widget-wrapper';
+import { DashboardBlockProps, WidgetWrapperProps } from './types';
 
 const WIDGET_TYPES = new Set<string>(Object.values(WidgetEnum));
 
-export const renderBlock = (block: Block, pageKey?: string) => {
+export const DashboardBlock: FC<DashboardBlockProps> = ({
+  block,
+  pageKey,
+  renderWidget,
+}) => {
   if (WIDGET_TYPES.has(block.type)) {
-    let widgetComponent: ReactNode = <>UndefiedType</>;
+    let widgetComponent: ReactNode = <>Undefined type</>;
     if (isIFrameWidget(block)) {
       widgetComponent = <IFrameWidget {...block} />;
     } else {
@@ -21,15 +25,23 @@ export const renderBlock = (block: Block, pageKey?: string) => {
           break;
       }
     }
-    return (
-      <WidgetWrapper {...block} pageKey={pageKey}>
-        {widgetComponent}
-      </WidgetWrapper>
-    );
+    return renderWidget({
+      children: widgetComponent,
+      block,
+      renderWidget,
+    });
   }
   switch (block.type) {
     case ContainerEnum.BasicContainer:
-      return <ContainerComponent {...block} pageKey={pageKey} />;
+      return (
+        <ContainerComponent
+          block={block}
+          pageKey={pageKey}
+          renderWidget={renderWidget}
+        />
+      );
   }
-  return <>Error block parsing: Undeifed type</>;
+  return <>Error block parsing: Undefined type</>;
 };
+
+export default DashboardBlock;
