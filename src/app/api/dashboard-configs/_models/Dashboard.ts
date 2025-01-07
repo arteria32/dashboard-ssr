@@ -40,6 +40,9 @@ const BlockSchema = new mongoose.Schema<Block>(
     source: {
       type: String,
     },
+    size: {
+      type: Number,
+    },
   },
   {
     toJSON: {

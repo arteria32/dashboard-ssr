@@ -18,6 +18,7 @@ export type BasicBlock = {
   type: BlockType;
   body?: Block[];
   description?: string;
+  size?: number;
 };
 
 export type IFrameWidgetBlock = BasicBlock & { source: string };
