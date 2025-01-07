@@ -14,8 +14,6 @@ type DashboardPageProps = {
   params: Promise<{ pageKey: string }>;
 };
 
-export const dynamic = 'force-dynamic';
-
 const DashboardPage: FC<DashboardPageProps> = async ({
   params,
   searchParams,

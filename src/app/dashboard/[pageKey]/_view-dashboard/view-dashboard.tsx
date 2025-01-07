@@ -1,5 +1,3 @@
-'use client';
-
 import { DashboardStructure } from '@/_types/features/dashboard';
 import { FC, Fragment } from 'react';
 import DashboardBlock from '../../_blocks';
