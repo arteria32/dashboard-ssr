@@ -1,5 +1,5 @@
 import Plug from '@/_shared/components/plug/plug';
-import { PageConfigClient } from '@/app/_sdk/PageConfigClient';
+import { DashboardConfigClient } from '@/app/_sdk/DashboardConfigClient';
 import '@gravity-ui/uikit/styles/fonts.css';
 import '@gravity-ui/uikit/styles/styles.css';
 import { FC } from 'react';
@@ -13,7 +13,7 @@ type BlockPageProps = {
 
 const BlockPage: FC<BlockPageProps> = async ({ params }) => {
   const { pageKey, blockId } = await params;
-  const block = await PageConfigClient.getBlockConfigByPageKeyAndBlockId(
+  const block = await DashboardConfigClient.getBlockConfigByPageKeyAndBlockId(
     pageKey,
     blockId,
   );

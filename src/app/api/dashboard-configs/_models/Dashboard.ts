@@ -2,18 +2,13 @@
 import {
   Block,
   ContainerEnum,
+  DashboardState,
   DashboardStructure,
   WidgetEnum,
 } from '@/_types/features/dashboard';
 import { randomUUID } from 'crypto';
 import mongoose from 'mongoose';
 
-export enum DashboardState {
-  Idle = 'idle',
-  Changing = 'changing',
-  Working = 'working',
-  Rejected = 'rejected',
-}
 export interface Dashboard extends DashboardStructure, mongoose.Document {
   createdAt: Date;
   modifiedAt?: Date;
@@ -21,7 +16,6 @@ export interface Dashboard extends DashboardStructure, mongoose.Document {
   modifedBy?: string;
   realtedTo?: string;
   isDefault?: boolean;
-  state: DashboardState;
 }
 
 const BlockSchema = new mongoose.Schema<Block>(

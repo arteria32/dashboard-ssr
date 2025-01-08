@@ -24,9 +24,17 @@ export type BasicBlock = {
 export type IFrameWidgetBlock = BasicBlock & { source: string };
 export type Block = BasicBlock | IFrameWidgetBlock;
 
+export enum DashboardState {
+  Idle = 'idle',
+  Changing = 'changing',
+  Working = 'working',
+  Rejected = 'rejected',
+}
+
 export type DashboardStructure = {
   id: string;
   key: string;
   style?: CSS.Properties;
   content: Block[];
+  state: DashboardState;
 };
