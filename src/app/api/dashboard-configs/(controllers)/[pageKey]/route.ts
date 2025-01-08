@@ -3,6 +3,7 @@ import { DashboardRepository } from '../../_repo/DashboardRepository';
 type PageByKeyParams = {
   pageKey: string;
 };
+
 export async function GET(
   request: Request,
   { params }: { params: Promise<PageByKeyParams> },
@@ -14,11 +15,22 @@ export async function GET(
 
 export async function DELETE(
   request: Request,
-  { params }: { params: PageByKeyParams },
+  { params }: { params: Promise<PageByKeyParams> },
 ) {
-  const { pageKey } = params;
+  const { pageKey } = await params;
   await DashboardRepository.deleteDashboardByKey(pageKey, true);
   return Response.json(
     'All dashboards with this key were deleted successfully.',
   );
+}
+
+export async function PUT(
+  request: Request,
+  { params }: { params: Promise<PageByKeyParams> },
+) {
+  const { pageKey } = await params;
+  const body = await request.json();
+  if (!body) return new Response('empty body', { status: 400 });
+  const result = await DashboardRepository.update(pageKey, body);
+  return Response.json(result);
 }
