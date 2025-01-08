@@ -24,7 +24,7 @@ const DashboardPage: FC<DashboardPageProps> = async ({
   const uiConfig = await DashboardConfigClient.getDashboardConfigByKey(pageKey);
 
   const userMode = isUserMode(mode) ? mode : UserMode.View;
-
+  console.log('uiConfig', uiConfig);
   if (!uiConfig) {
     return <Plug message={'Отсутствует конфигурационный файл '} />;
   }
