@@ -10,20 +10,32 @@ export const DashboardRepository = {
   getByKey,
   getAllDashboardBlocksByKey,
   getBlockByDashboardKeyAndBlockId,
-  update,
+  replaceByKey,
   deleteDashboardByKey,
+  updateByKey,
 };
 
 async function getAll() {
   return await DashboardModel.find();
 }
 
-async function create(dashnoardDTO: DashboardStructure) {
-  const dashboard = new DashboardModel(dashnoardDTO);
+async function create(dashboardDTO: DashboardStructure) {
+  const dashboard = new DashboardModel(dashboardDTO);
   return await dashboard.save();
 }
-async function update(key: string, body: DashboardStructure) {
+async function replaceByKey(key: string, body: DashboardStructure) {
   const dashboard = await DashboardModel.findOneAndReplace(
+    { key },
+    { ...body, key },
+    {
+      new: true,
+    },
+  );
+  return dashboard;
+}
+
+async function updateByKey(key: string, body: Partial<DashboardStructure>) {
+  const dashboard = await DashboardModel.findOneAndUpdate(
     { key },
     { ...body, key },
     {

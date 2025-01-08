@@ -26,6 +26,8 @@ const ModeSwitcher = () => {
     DashboardState.Working,
   );
 
+  const [isDisabledSwitcher, setDisabledSwitcher] = useState(false);
+
   useEffect(() => {
     const updateState = async () => {
       const newState =
@@ -35,22 +37,33 @@ const ModeSwitcher = () => {
     updateState();
   }, [pageKey]);
   const onModeUpdate = useCallback(
-    (isEdit: boolean) => {
+    async (isEdit: boolean) => {
+      setDisabledSwitcher(true);
       const newMode = isEdit ? UserMode.Edit : UserMode.View;
-      const isModeBlocked = dashboardState === DashboardState.Changing;
+      const isModeBlocked =
+        isEdit && dashboardState === DashboardState.Changing;
       if (isModeBlocked) {
         const isApprovedChanges = confirm(
-          'The dashboard is now being changed by different user',
+          'The dashboard is now being changed by different user. Would you like to change dashboard now?',
         );
         if (!isApprovedChanges) return;
       }
+
+      const newState = await DashboardConfigClient.updateDashboardStateByKey(
+        pageKey,
+        newMode === UserMode.Edit
+          ? DashboardState.Changing
+          : DashboardState.Working,
+      );
+      setDashboardState(newState);
+      setDisabledSwitcher(false);
       router.push(
         pathname +
           '?' +
           createQueryString(USER_MODE_SEARCH_KEY, newMode, searchParams),
       );
     },
-    [pathname, router, searchParams, dashboardState],
+    [dashboardState, pageKey, router, pathname, searchParams],
   );
 
   return (
@@ -59,6 +72,7 @@ const ModeSwitcher = () => {
         size="l"
         checked={userMode === UserMode.Edit}
         onUpdate={onModeUpdate}
+        disabled={isDisabledSwitcher}
       >
         <span>Edit mode</span>
       </Switch>

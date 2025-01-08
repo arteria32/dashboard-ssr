@@ -17,9 +17,21 @@ export class DashboardConfigClient {
     }).then((res) => res.json());
     return result;
   }
+
   static async getDashboardStateByKey(key: string): Promise<DashboardState> {
     const result: DashboardStructure = await fetch(`${this.basePath}/${key}`, {
       cache: 'no-cache',
+    }).then((res) => res.json());
+    return result.state;
+  }
+
+  static async updateDashboardStateByKey(
+    key: string,
+    state: DashboardState,
+  ): Promise<DashboardState> {
+    const result: DashboardStructure = await fetch(`${this.basePath}/${key}`, {
+      method: 'PATCH',
+      body: JSON.stringify({ state }),
     }).then((res) => res.json());
     return result.state;
   }

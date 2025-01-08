@@ -31,6 +31,17 @@ export async function PUT(
   const { pageKey } = await params;
   const body = await request.json();
   if (!body) return new Response('empty body', { status: 400 });
-  const result = await DashboardRepository.update(pageKey, body);
+  const result = await DashboardRepository.replaceByKey(pageKey, body);
+  return Response.json(result);
+}
+
+export async function PATCH(
+  request: Request,
+  { params }: { params: Promise<PageByKeyParams> },
+) {
+  const { pageKey } = await params;
+  const body = await request.json();
+  if (!body) return new Response('empty body', { status: 400 });
+  const result = await DashboardRepository.updateByKey(pageKey, body);
   return Response.json(result);
 }
