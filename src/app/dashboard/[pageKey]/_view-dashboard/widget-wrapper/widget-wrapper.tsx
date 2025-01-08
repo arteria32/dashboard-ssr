@@ -9,13 +9,20 @@ const ViewWidgetWrapper = ({
   children,
   pageKey,
 }: WidgetWrapperProps) => {
-  const { id, name, description } = block;
+  const { id, name, description, size } = block;
   return (
-    <Card className={styles.wrapper} view="raised">
+    <Card
+      className={styles.wrapper}
+      view="raised"
+      style={{
+        flexGrow: size,
+      }}
+    >
       <div className={styles.header}>
         <div className={styles.left}>
           <Text ellipsis variant="body-1">
             {name}
+            {size}
           </Text>
         </div>
         <div className={styles.right}>
