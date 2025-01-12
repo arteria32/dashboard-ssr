@@ -19,8 +19,13 @@ const EditableWrapper = ({
 
   const onSizeChange = useCallback(
     (newSize: number) => {
-      setCurrentSize(newSize);
-      onBlockChange({ id, props: { size: newSize } });
+      let size = newSize;
+      if (newSize <= 0) {
+        alert("Can't reduce widget size lower then 1");
+        size = 1;
+      }
+      setCurrentSize(size);
+      onBlockChange({ id, props: { size } });
     },
     [id, onBlockChange],
   );
@@ -39,14 +44,15 @@ const EditableWrapper = ({
         flexGrow: currentSize,
       }}
     >
-      <div>
-        Change Size:
-        <Button onClick={() => decrementSize()}>
-          <Minus />
-        </Button>
-        <Button onClick={() => incrementSize()}>
-          <Plus />
-        </Button>
+      <div className={styles.header}>
+        <div className={styles.buttonsBlock}>
+          <Button onClick={() => decrementSize()} size="s">
+            <Minus />
+          </Button>
+          <Button onClick={() => incrementSize()} size="s">
+            <Plus />
+          </Button>
+        </div>
       </div>
       {children}
     </div>

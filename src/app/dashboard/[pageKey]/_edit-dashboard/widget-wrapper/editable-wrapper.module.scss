@@ -5,5 +5,22 @@
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
-    border: 1px dotted red;
+    border: 2px solid var(--g-color-text-info);
+    border-radius: var(--g-border-radius-m);
 }
+.header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-end;
+    position: relative;
+    left: 0;
+    top: 0;
+    
+    .buttonsBlock{
+        background:var(--g-color-text-info); 
+        padding: var(--g-spacing-1);
+        border-bottom-left-radius: var(--g-border-radius-m);
+    }
+}   
