@@ -4,7 +4,7 @@ import {
   DashboardStructure,
 } from '@/_types/features/dashboard';
 
-//todo:create a wrapper for sdk clients to catching errors
+//todo:create a wrapper for sdk clients for catching errors
 /** Client for fetching data */
 export class DashboardConfigClient {
   private static basePath = `${process.env.BASE_URL ?? process.env.NEXT_PUBLIC_BASE_URL ?? 'NOT_DEFINED_URL'}/api/dashboard-configs`;
